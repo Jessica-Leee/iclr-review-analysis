@@ -30,12 +30,7 @@ Fetch ICLR submissions + reviews from OpenReview and write JSONL files to `data/
 python -m data.ingest.openreview_iclr --years 2024 --out-dir data/raw/iclr
 ```
 
-This writes `data/raw/iclr/iclr_{year}.jsonl` (one record per **(paper, review)**). Each record includes paper fields and review fields, e.g.:
-
-- Paper: `paper_id`, `forum`, `number`, `year`, `title`, `abstract`
-- Review: `review_id`, `review_text`, `ratings`, `strengths`, `weaknesses`, `questions`
-
-Note: this repo includes `data/raw/iclr/` for convenience. You only need to run the ingest script if you want to refresh or fetch additional years.
+This writes `data/raw/iclr/iclr_{year}.jsonl`. Each record is one **(paper, review)** pair and includes paper fields (e.g. `paper_id`, `year`, `title`, `abstract`) plus review fields (e.g. `review_id`, `review_text`, `ratings`, and when available `strengths`, `weaknesses`, `questions`).
 
 Optional dedupe + normalization (no repeated title/abstract):
 

@@ -13,9 +13,7 @@ __pycache__/
 out/*
 !out/batch_212/
 !out/batch_212/**
-data/raw/*
-!data/raw/iclr/
-!data/raw/iclr/**
+data/raw/
 data/processed/
 processed/
 
