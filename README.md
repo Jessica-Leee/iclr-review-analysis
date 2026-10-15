@@ -1,8 +1,8 @@
-# Reviewer Simulation Pipeline (ICLR)
+# ICLR review experiments
 
-This project generates ICLR-style reviews for papers and compares them to the actual human reviews using a simple topical-overlap metric.
+A research pipeline that generates ICLR-style reviews and compares them with human reviews from OpenReview. It supports single-paper and batch runs with structured output and comparison reports.
 
-It is meant to be easy to run on a laptop with a Claude API key and a local copy of the ICLR OpenReview dump.
+In the OpenReview workflow, the model receives the paper title and abstract. TF-IDF overlap measures textual similarity; it is not a measure of review quality.
 
 ## Setup
 
@@ -15,12 +15,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create a `.env` file (the real key stays only on your machine):
-
-```bash
-cp .env.example .env
-# then edit .env and paste your Claude key after ANTHROPIC_API_KEY=
-```
+Create a local `.env` file with `ANTHROPIC_API_KEY` set to your own key. Keep it outside version control. `ANTHROPIC_MODEL` can be set to select a model available to your account.
 
 ## Data: OpenReview ICLR (get the raw data first)
 
@@ -94,3 +89,7 @@ In this repo, `out/batch_212/` contains a run on 212 ICLR 2024 papers and an `ev
 - `data/ingest/openreview_iclr.py` — fetch ICLR data from OpenReview
 - `data/ingest/dedupe_iclr.py` — dedupe and (optionally) normalize to papers_*.jsonl + reviews_*.jsonl
 - `pipeline/prompt/templates/` — `system.txt` and `review.txt` templates used to prompt the LLM
+
+## Interpretation
+
+The generated review and human review may have different information available to them. The topical-overlap metric captures shared vocabulary, with optional comparisons of strengths and weaknesses. Use it as an exploratory comparison rather than evidence that a model can replace a reviewer. Existing batch outputs are recorded artifacts; rerunning generation makes external API requests.
