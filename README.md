@@ -1,4 +1,4 @@
-# ICLR reviewer pipeline
+# ICLR Review Generation and Comparison
 
 Generate ICLR-style review text with the Claude API and compare its vocabulary with a human review using TF-IDF cosine similarity. The repository includes OpenReview ingestion, prompt templates, structured review parsing, batch selection, and descriptive reports.
 
@@ -112,4 +112,4 @@ The tests use synthetic text, temporary files, and mocked model/subprocess calls
 - `pipeline/prompt/templates/`: system and review prompts.
 - `tests/`: synthetic offline regression tests.
 
-Related repository: [iclr-reviewer-pipeline](https://github.com/Jessica-Leee/iclr-reviewer-pipeline). Both contain the textual review pipeline; repository names alone do not establish a separate numeric rating model.
+An earlier snapshot is preserved in [ICLR Review Generation and Comparison (Archive)](https://github.com/Jessica-Leee/iclr-review-analysis-archive).
